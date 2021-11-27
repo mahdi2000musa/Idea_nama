@@ -1,2 +1,2 @@
 # Idea_nama
-for Your Idea
+for Your Idea(soon)

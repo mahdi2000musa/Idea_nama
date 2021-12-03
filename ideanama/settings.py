@@ -70,6 +70,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ideanama.wsgi.application'
 
+AUTH_USER_MODEL = 'accounts.Account'
+
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

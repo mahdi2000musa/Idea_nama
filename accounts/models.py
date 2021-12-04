@@ -43,10 +43,10 @@ class MyAccountManager(BaseUserManager) :
     
 
 class Account(AbstractBaseUser):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=50, unique=True)
-    username = models.CharField(max_length=191,)
+    first_name = models.CharField(max_length=100, verbose_name='نام')
+    last_name = models.CharField(max_length=100, verbose_name='نام خانوادگی')
+    phone_number = models.CharField(max_length=50, unique=True, verbose_name='شماره تلفن')
+    username = models.CharField(max_length=191, verbose_name='نام کاربری')
 
     #required
 
@@ -62,6 +62,10 @@ class Account(AbstractBaseUser):
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
     objects = MyAccountManager()
+
+    class Meta: 
+        verbose_name = "حساب های کاربری"
+
 
     def __str__(self): 
         return self.phone_number

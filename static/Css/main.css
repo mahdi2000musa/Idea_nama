@@ -48,10 +48,15 @@ body{
     display: flex;
     position: relative;
 }
-.field:nth-child(2){
-    margin-bottom: 50px;
+.field:nth-child(4){
+    /* margin-bottom: 50px; */
     /* not complete */
 }
+
+#margins {
+    margin-bottom: 50px
+}
+
 .field input{
     height: 100%;
     width: 100%;

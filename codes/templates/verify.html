@@ -8,11 +8,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <form action="{% url 'login' %}" method="POST">
+    <form action="{% url 'verification' %}" method="POST">
       {% csrf_token %}
       {{form.as_p}}
 
-      <button type="submit"> ورود < /button> 
+      <button type="submit"> ثبت < /button> 
     </form> 
   </body>
 </html>

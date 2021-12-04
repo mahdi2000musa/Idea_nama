@@ -15,7 +15,8 @@
     <div class="text text-center">
         لوگو ایده نما
     </div>
-    <form action="#">
+    <form action="{% url 'register' %}" method="POST">
+      {% csrf_token %}
         <div class="field">
               {{ form.first_name }}
               <span  class="fas fa-user"></span>
@@ -31,7 +32,7 @@
             <span  class="fas fa-user"></span>
             <label>شماره همراه</label>
       </div>
-      <div class="field">
+      <div id="margins" class="field">
           {{ form.password }}
           <span  class="fas fa-user"></span>
           <label>رمز عبور</label>
@@ -39,7 +40,7 @@
         
         
         
-           <button type="button" class="btn btn-outline-warning rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">ورود</button>
+           <button type="submit" class="btn btn-outline-warning rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">ورود</button>
             <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

@@ -1,0 +1,33 @@
+from django.db import models
+from accounts.models import Account
+
+
+# Create your models here.
+
+class Category(models.Model):
+    category_name = models.CharField(max_length=50, blank=False)
+    category_desc = models.CharField(max_length=191, blank=False)
+    category_img = models.ImageField(upload_to='category_image',blank =True)
+    
+    def __str__(self):
+        return f'{self.category_name}'
+
+
+
+class Idea(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, default='')
+    title = models.CharField(max_length=191, blank=False)
+    desc = models.TextField(max_length=3000, )
+    contact = models.CharField(max_length=150, blank=False)
+    file = models.FileField(blank=True, upload_to='idea_file')
+    score = models.IntegerField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    like = models.IntegerField(default=0,)
+    is_accepted = models.BooleanField()
+    category = models.ForeignKey(Category, verbose_name="دسته بندی", on_delete=models.CASCADE)
+
+   
+    
+    def __str__(self):
+        return self.title

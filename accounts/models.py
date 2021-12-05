@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 
 
 class MyAccountManager(BaseUserManager) :
-    def create_user(self, first_name, last_name, phone_number, password = None, ):
+    def create_user(self, first_name, last_name, phone_number, password = None, username = "user"):
 
         if not phone_number: 
             raise ValidationError('برای ثبت نام شماره همراه راوارد کنید')
@@ -17,7 +17,7 @@ class MyAccountManager(BaseUserManager) :
             first_name = first_name,
             last_name = last_name,
             phone_number = phone_number,
-            username = None
+            username = username
         )
 
         user.set_password(password)

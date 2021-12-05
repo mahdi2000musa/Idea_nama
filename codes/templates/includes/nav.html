@@ -1,0 +1,58 @@
+{% load static %}
+
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky" data-offset="500">
+      <div class="container">
+        <!-- لوگوی ایده نما -->
+        <a href="../Idea_nama/index.html" class="navbar-brand">لوگو	<span class="text-primary">ایده نما</span></a>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div  class="navbar-collapse collapse" id="navbarContent" style="text-align:center  ;"> 
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">صفحه اصلی</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">درباره ما</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">تماس با ما</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'idea_view' %}">بانک ایده ها</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Ideasform.html">ارسال ایده ها</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../Idea_nama/web/under construction.html">استارت آپ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../Idea_nama/web/under construction.html">تبادل خدمات</a>
+            </li>
+            {% if user.id is None %}
+            <li class="nav-item">
+              <a class="btn btn-primary ml-lg-2" href="{% url 'login' %}"> ورود/ثبت نام</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="btn btn-primary ml-lg-2" href="#"> داشبورد</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+    
+        <!-- دکمه زیر بنر 
+        <a href="#" class="btn-scroll" data-role="smoothscroll"><span class="mai-arrow-down"></span></a>
+      </div>
+    </div> -->
+  </header>
+

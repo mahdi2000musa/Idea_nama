@@ -2,12 +2,21 @@ from django.shortcuts import render, redirect
 
 from accounts.models import Account
 from .froms import CodeForm
-from .models import VerificationCode
+from .models import SiteBanner, VerificationCode
 from django.contrib.auth import  login
+from idea.models import Idea_Bank
 
 
 def home(request): 
-    return render(request, 'home.html')
+
+ 
+    best_idea = Idea_Bank.objects.filter( is_accepted = True)
+    banner = SiteBanner.objects.get(title = "m")
+    context = {
+        "best_idea": best_idea,
+        "banner" : banner
+    }
+    return render(request, 'home.html', context)
 
 def verification(request) : 
 

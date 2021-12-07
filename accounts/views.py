@@ -63,5 +63,8 @@ def login(request):
 
 @login_required(login_url= 'login')
 def logout(request ): 
-    return render(request , 'logout.html')
+
+    auth.logout(request)
+    return redirect('login')
+    
 

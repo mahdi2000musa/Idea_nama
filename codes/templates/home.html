@@ -7,68 +7,66 @@
     <div class="container">
         <div class="page-banner home-banner">
         <div class="row align-items-center flex-wrap-reverse h-100">
+          
+          {% comment %} class="text-lg text-grey mb-5" {% endcomment %}
             <div class="col-md-6 py-5 wow fadeInLeft">
-            <h1 class="mb-4">ثبت ایده های شما</h1>
-            <p class="text-lg text-grey mb-5">ایده نما</p>
+            <h1 class="mb-4">شتاب دهنده فرهنگی اجتماعی</h1>
+            <h1 class="mb-4">طلوع</h1>
+            <h4 class="mb-4">تلالو فکر و اندیشه</h4>
             <!-- ویدیوی معرفی ایده نما -->
-            <a href="#" class="btn btn-primary btn-split">پخش ویدیو <div class="fab"><span class="mai-play"></span></div></a>
+            <a href="#" class="btn btn-primary btn-split">فردایی روشن <div class="fab"><span class="mai-play"></span></div></a>
             </div>
             <div class="col-md-6 py-5 wow zoomIn">
             <div class="img-fluid text-center">
                 <!-- عکس بنر -->
-                <img src="{% static 'img/banner_image_1.svg'%}" alt="بنر">
+                <img src="{{banner.main_banner.url}}" alt="بنر">
                 </div>
         </div>
     </div>
 </div>
 </div>
-    <div class="page-section">
+    
+<div class="page-section">
         <div class="container">
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="card-service wow fadeInUp">
-                <div class="header">
-                  <img src="{% static 'img/services/service-1.svg' %}" alt=""> 
-                </div>
-                <div class="body">
-                  <h5 class="text-secondary">مهدی موسی سمنانی</h5>
-                  <p>بک کار عزیز</p>
-                  <a href="about.html" class="btn btn-primary">بیشتر بخوانید</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card-service wow fadeInUp">
-                <div class="header">
-                  <img src="{% static 'img/services/service-2.svg' %}" alt="">
-                </div>
-                <div class="body">
-                  <h5 class="text-secondary">ارشیا رسولی</h5>
-                  <p>فرانت کار عزیز</p>
-                  <a href="about.html" class="btn btn-primary">بیشتر بخوانید</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card-service wow fadeInUp">
-                <div class="header">
-                  <img src="{% static 'img/services/service-3.svg' %}" alt="">
-                </div>
-                <div class="body">
-                  <h5 class="text-secondary">علیرضا ملکی</h5>
-                  <p>بک کار عزیز</p>
-                  <a href="about.html" class="btn btn-primary">بیشتر بخوانید</a>
-                </div>
-              </div>
-            </div>
+          <div class="text-center wow fadeInUp">
+            <div class="subhead">ایده های برتر ماه</div>
+            <h2 class="title-section"> ببنید و لذت ببرید</h2>
+            <div class="divider mx-auto"></div>
           </div>
-        </div> <!-- .container -->
-      </div> <!-- .page-section -->
+    
+          <div class="row mt-5" style="text-align: right;">
+            
+            {% for item in best_idea %}
+    
+            <div class="col-lg-4 py-3 wow fadeInUp">
+              <div class="card-blog">
+                <div class="header">
+                  <div class="post-thumb">
+                    <img src="{{item.category.category_img.url}}" alt="">
+                  </div>
+                </div>
+                <div class="body">
+                  <h5 class="post-title"><a href="{% url 'detail_view' item.category.id item.id %}">{{item.title}}</a></h5>
+                  <div class="post-date">منتشر شده در: <a href="#">{{item.created_at}}</a></div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+
+            <div class="col-12 mt-4 text-center wow fadeInUp" dir="rtl">
+              <a href="{% url 'idea_view' %}" class="btn btn-primary">بیشتر ببینید.</a>
+            </div>
+
+            
+          </div>
+        </div>
+
+
       <div class="page-section bg-light">
         <div class="container">
           <div class="text-center wow fadeInUp">
             <div class="subhead">خدمات ما</div>
-            <h2 class="title-section">چگونه ایده نما به کمک شما می اید؟</h2>
+            <h2 class="title-section">چگونه طلوع به کمک شما می اید؟</h2>
             <div class="divider mx-auto"></div>
           </div>
     <!--  موارد خدمات -->
@@ -78,8 +76,8 @@
                   <div class="header mb-3">
                     <span class="mai-business"></span>
                   </div>
-                  <h5>OnSite SEO</h5>
-                  <p>We analyse your website's structure, internal architecture & other key</p>
+                  <h5>پشتیبانی مالی </h5>
+                  <p>طلوع تا آخر انحام ایده پشتیبان شما خواهد بود </p>
                 </div>
               </div>
               <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
@@ -87,8 +85,8 @@
                   <div class="header mb-3">
                     <span class="mai-business"></span>
                   </div>
-                  <h5>OnSite SEO</h5>
-                  <p>We analyse your website's structure, internal architecture & other key</p>
+                  <h5>پشتیبانی معنوی</h5>
+                  <p>شما می توانید با تعیین کردن محل برگزاری ایده از ازتباطات طلوع استفاده کنید.</p>
                 </div>
               </div>
               <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
@@ -96,8 +94,8 @@
                   <div class="header mb-3">
                     <span class="mai-business"></span>
                   </div>
-                  <h5>OnSite SEO</h5>
-                  <p>We analyse your website's structure, internal architecture & other key</p>
+                  <h5>بانک ایده</h5>
+                  <p>طلوع با طراحی زیبا بخش بانک ایده ها به بهتر دیده شدن ایده های شما کمک می کند.</p>
                 </div>
               </div>
               <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
@@ -105,46 +103,14 @@
                   <div class="header mb-3">
                     <span class="mai-business"></span>
                   </div>
-                  <h5>OnSite SEO</h5>
-                  <p>We analyse your website's structure, internal architecture & other key</p>
+                  <h5>ایده های برتر</h5>
+                  <p>طلوع با طراحی بخش ایده های برتر ماه سعی در دیده شدن 3 ایده برتر دارد برای جذب سرمابه دار.</p>
                 </div>
               </div>
-              <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
-                <div class="features">
-                  <div class="header mb-3">
-                    <span class="mai-business"></span>
-                  </div>
-                  <h5>OnSite SEO</h5>
-                  <p>We analyse your website's structure, internal architecture & other key</p>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
-                <div class="features">
-                  <div class="header mb-3">
-                    <span class="mai-business"></span>
-                  </div>
-                  <h5>OnSite SEO</h5>
-                  <p>We analyse your website's structure, internal architecture & other key</p>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
-                <div class="features">
-                  <div class="header mb-3">
-                    <span class="mai-business"></span>
-                  </div>
-                  <h5>OnSite SEO</h5>
-                  <p>We analyse your website's structure, internal architecture & other key</p>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 col-xl-3 py-3 wow zoomIn">
-                <div class="features">
-                  <div class="header mb-3">
-                    <span class="mai-business"></span>
-                  </div>
-                  <h5>OnSite SEO</h5>
-                  <p>We analyse your website's structure, internal architecture & other key</p>
-                </div>
-              </div>
+              
+              
+             
+           
             </div>
     
         </div> <!-- .container -->
@@ -154,18 +120,18 @@
           <div class="container">
             <div class="row align-items-center">
               <div class="col-lg-6 py-3 pr-lg-5 wow fadeInUp" style="text-align: right;" >
-                <h2 class="title-section"> ایده نما<br> در خدمت شما</h2>
+                <h2 class="title-section"> طلوع<br> در خدمت شما</h2>
                 <div dir="rtl" class="divider"></div>
-                <p>We're an experienced and talented team of passionate consultants who breathe with search engine marketing.</p>
+                <p> ما در طلوع سعی داریم با استفاده از ظرفیت های موجود از ایده های شما در زمینه فرهنگی و اجتماعی حمایت کنیم  </p>
                 
                 <ul class="theme-list theme-list-light text-white">
                   <li>
-                    <div class="h5">SEO Content Strategy</div>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor</p>
+                    <div class="h5">استارتاپ</div>
+                    <p>برخی از ایده های شما ممکن است که امکان تبدیل به کسب و کار شدن داشته باشد طلوع در این مسیر هم پشتیبان شما خواهد بود</p>
                   </li>
                   <li>
-                    <div class="h5">B2B SEO</div>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor</p>
+                    <div class="h5">تبادل خدمات</div>
+                    <p>طلوع برای اتصال ظزفیت ها از بخش تبادل خدمات استفاده می کند.</p>
                   </li>
                 </ul>
               </div>
@@ -178,61 +144,50 @@
           </div>
         </div> <!-- .wrap -->
       </div> <!-- .page-section -->
-      <div class="page-section">
-        <div class="container">
-          <div class="text-center wow fadeInUp">
-            <div class="subhead">ایده های برتر ماه</div>
-            <h2 class="title-section"> ببنید و لذت ببرید</h2>
-            <div class="divider mx-auto"></div>
-          </div>
-    
-          <div class="row mt-5" style="text-align: right;">
-            <div class="col-lg-4 py-3 wow fadeInUp">
-              <div class="card-blog">
-                <div class="header">
-                  <div class="post-thumb">
-                    <img src="../Idea_nama/assets/img/blog/blog-1.jpg" alt="">
+      
+
+          <div class="page-section">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="card-service wow fadeInUp">
+                    <div class="header">
+                      <img src="{% static 'img/services/service-1.svg' %}" alt=""> 
+                    </div>
+                    <div class="body">
+                      <h5 class="text-secondary">مهدی موسی سمنانی</h5>
+                      <p>بک کار عزیز</p>
+                      <a href="about.html" class="btn btn-primary">بیشتر بخوانید</a>
+                    </div>
                   </div>
                 </div>
-                <div class="body">
-                  <h5 class="post-title"><a href="#">Source of Content Inspiration</a></h5>
-                  <div class="post-date">Posted on <a href="#">27 Jan 2020</a></div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-lg-4 py-3 wow fadeInUp">
-              <div class="card-blog">
-                <div class="header">
-                  <div class="post-thumb">
-                    <img src="../Idea_nama/assets/img/blog/blog-2.jpg" alt="">
+                <div class="col-lg-4">
+                  <div class="card-service wow fadeInUp">
+                    <div class="header">
+                      <img src="{% static 'img/services/service-2.svg' %}" alt="">
+                    </div>
+                    <div class="body">
+                      <h5 class="text-secondary">ارشیا رسولی</h5>
+                      <p>فرانت کار عزیز</p>
+                      <a href="about.html" class="btn btn-primary">بیشتر بخوانید</a>
+                    </div>
                   </div>
                 </div>
-                <div class="body">
-                  <h5 class="post-title"><a href="#">Source of Content Inspiration</a></h5>
-                  <div class="post-date">Posted on <a href="#">27 Jan 2020</a></div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-lg-4 py-3 wow fadeInUp">
-              <div class="card-blog">
-                <div class="header">
-                  <div class="post-thumb">
-                    <img src="../Idea_nama/assets/img/blog/blog-3.jpg" alt="">
+                <div class="col-lg-4">
+                  <div class="card-service wow fadeInUp">
+                    <div class="header">
+                      <img src="{% static 'img/services/service-3.svg' %}" alt="">
+                    </div>
+                    <div class="body">
+                      <h5 class="text-secondary">علیرضا ملکی</h5>
+                      <p>بک کار عزیز</p>
+                      <a href="about.html" class="btn btn-primary">بیشتر بخوانید</a>
+                    </div>
                   </div>
                 </div>
-                <div class="body">
-                  <h5 class="post-title"><a href="#">Source of Content Inspiration</a></h5>
-                  <div class="post-date">Posted on <a href="#">27 Jan 2020</a></div>
-                </div>
               </div>
-            </div>
-    
-            <div class="col-12 mt-4 text-center wow fadeInUp" dir="rtl">
-              <a href="blog.html" class="btn btn-primary">بیشتر ببینید.</a>
-            </div>
-          </div>
+            </div> <!-- .container -->
+          </div> <!-- .page-section -->
         </div>
       </div>
     

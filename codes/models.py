@@ -25,3 +25,22 @@ class VerificationCode(models.Model):
 
 
         super().save(*args, **kwargs)
+
+
+banner_variation = [
+    ('m','main',),
+     ('i','idea'), 
+     ( 'f','festival')
+]
+    
+
+
+class SiteBanner(models.Model): 
+
+    main_banner = models.ImageField(blank = True, upload_to= 'banner')
+    title = models.CharField(max_length=150, choices=banner_variation)
+
+
+    def __str__(self): 
+        return self.title
+    

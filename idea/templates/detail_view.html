@@ -27,14 +27,16 @@
                   ایده پرداز: <a href="#"> {{single_idea.user.first_name }} {{ single_idea.user.last_name}} </a>
                 </div>
 
-                
+                </div>
+                تعداد لایک: <a href="#">  {{ single_idea.like}} </a>
+              </div>
               </div>
             </div>
             <h1 class="post-title">{{ single_idea.title }}</h1>
             <div class="post-meta">
               <div class="post-date">
                 <span class="icon">
-                  <span class="mai-time-outline"></span>
+                  <span class="mai-time-outline">منتشر شده در :</span>
                 </span> <a href="#">{{single_idea.created_at}}</a>
               </div>
               {% comment %} <div class="post-comment-count ml-2">
@@ -43,12 +45,13 @@
                 </span> <a h>4 Comments</a>ref="#"
               </div> {% endcomment %}
             </div>
+            
             <div class="post-content">
 
                 <p> {{single_idea.desc}} </p>
             </div>
-          </div>
-          <div dir="rtl" class="container-fluid mt-4" style="text-align: right;" > 
+         
+          {% comment %} <div dir="rtl" class="container-fluid mt-4" style="text-align: right;" > 
             <div class="row">
               <div class="col-lg-12 mb-5 mb-lg-0">
                 <form  action="#" class="contact-form py-5 px-lg-5">
@@ -91,7 +94,7 @@
         </div>
         </div>
         <div class="col-lg-4">
-          <div class="widget">
+          <div class="widget"> {% endcomment %}
             <!-- Widget search
             <div class="widget-box">
               <form action="#" class="search-widget">

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Idea
+from .models import Category, Idea_Bank
 from django.contrib.admin import ModelAdmin
 
 
@@ -9,5 +9,5 @@ class IdeaAdmin(ModelAdmin) :
     ordering = ['created_at',]
     
 
-admin.site.register(Idea, IdeaAdmin)
+admin.site.register(Idea_Bank, IdeaAdmin)
 admin.site.register(Category)

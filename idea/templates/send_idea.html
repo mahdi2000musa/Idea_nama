@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div dir="rtl" class="container">
+    <div class="page-banner">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-md-6 wow fadeInLeft">
+          
+          <h1 class="text-center">ایده ی خود را در فرم زیر ثبت کنید.</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section">
+    
+    
+        <div dir="rtl" class="container-fluid mt-4" style="text-align: right;" > 
+          <div class="row" style="justify-content: center;">
+            <div class=" col-lg-8 mb-5 mb-lg-0"  >
+
+                <h2  class="mb-4 font-weight-medium text-secondary" style="text-align: center ;" >جزییات ایده ی خود را در زیر وارد کنید</h2>
+          
+                    <form action="{% url 'send_idea' %}"  method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+
+                        <button type = "submit" class="btn btn-outline-warning rounded-pill"> ثبت </button>
+                    </form>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+ 
+
+
+{% endblock  %}

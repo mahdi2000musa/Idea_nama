@@ -16,6 +16,7 @@
       طلوع
     </div>
     <form action="{% url 'verification' %}" method="POST">
+    
       {% csrf_token %}
         <div class="field">
               {{ form.number }}

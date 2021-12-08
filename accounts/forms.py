@@ -18,10 +18,16 @@ class RegistrationForm(forms.ModelForm):
         clean_data = super(RegistrationForm, self).clean()
 
         phone_number = clean_data.get('phone_number')
+        password = clean_data.get('password')
 
         if(len(phone_number) != 11) : 
             raise forms.ValidationError(
                 "شماره تلفن همراه باید 11 رقمی باشد."
+            )
+
+        if( len(password) < 8 ): 
+            raise forms.ValidationError(
+                "کاربر گرامی رمز عبور باید بیش تر از 8 کاراکتر باشد."
             )
     
     def __init(self, *args, **kwargs): 

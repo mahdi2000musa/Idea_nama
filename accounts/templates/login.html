@@ -16,6 +16,7 @@
         طلوع
     </div>
     <form action="{% url 'login' %}" method="POST">
+    {% include 'includes/alert.html' %}
       {% csrf_token %}
         <div class="field">
               {{ form.username }}
@@ -30,6 +31,8 @@
         <div class="forget-pass text-center">
            <a href="#">رمز عبور خود را فراموش کردید؟</a>
            </div>
+
+           {{form.errors}}
            <button type="submit" class="btn btn-outline-warning rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">ورود</button>
             <!-- Modal -->
   {% comment %} <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

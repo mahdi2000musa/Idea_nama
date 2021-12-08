@@ -1,7 +1,7 @@
 from django.db import models
 from accounts.models import Account
 import random
-
+from PIL import Image
 
 class VerificationCode(models.Model):
 
@@ -43,4 +43,14 @@ class SiteBanner(models.Model):
 
     def __str__(self): 
         return self.title
+
+    def save(self):
+        super().save()
+
+        img = Image.open(self.main_banner.path)
+
+        if img.height > 400 or img.width > 400:
+            output_size = (400, 300)
+            img.thumbnail(output_size)
+            img.save(self.main_banner.path)
     

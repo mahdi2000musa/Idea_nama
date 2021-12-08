@@ -1,6 +1,6 @@
 from django.db import models
 from accounts.models import Account
-
+from django_jalali.db import models as jmodles
 
 # Create your models here.
 
@@ -21,8 +21,8 @@ class Idea_Bank(models.Model):
     contact = models.CharField(max_length=150, blank=False)
     comp_file = models.FileField(blank=True, upload_to='idea_file/')
     score = models.IntegerField(default = 0 , blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = jmodles.jDateTimeField(auto_now_add=True)
+    updated_at = jmodles.jDateTimeField(auto_now=True)
     like = models.IntegerField(default=0,)
     is_accepted = models.BooleanField(default=False)
     category = models.ForeignKey(Category, verbose_name="دسته بندی", on_delete=models.CASCADE)

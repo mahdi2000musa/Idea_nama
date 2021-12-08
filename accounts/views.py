@@ -6,6 +6,7 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 
 from accounts.models import Account
+from django.contrib import messages
 
 def register(request ): 
 
@@ -23,6 +24,9 @@ def register(request ):
             user.save()
 
             return redirect('login')
+
+        else: 
+            messages.error(request, 'کاربر گرامی ثبت نام شما انجام مشد مجدادا تلاش بفرمایید')
         
     else: 
 
@@ -50,7 +54,7 @@ def login(request):
             return redirect('verification')
 
         else: 
-            print('login fiald')
+            messages.error(request, 'شماره همراه یا نام کاربری نادرست است.')
             # django messages for error
             return redirect('login')
 

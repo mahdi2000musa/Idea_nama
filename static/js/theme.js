@@ -100,4 +100,3 @@ $('document').ready(function() {
   // Page scroll animate
   new WOW().init();
 });
-

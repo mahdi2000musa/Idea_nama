@@ -5,7 +5,7 @@ from .froms import CodeForm
 from .models import SiteBanner, VerificationCode
 from django.contrib.auth import  login
 from idea.models import Idea_Bank
-
+from django.contrib import messages
 
 def home(request): 
 
@@ -37,6 +37,7 @@ def verification(request) :
 
             if str(code) == num: 
                 code.save()
+                messages.success(request, f"{user.first_name} {user.last_name} عزیز شما با موفقیت وارد شدید.")
                 login(request, user)
                 return redirect('home')
 

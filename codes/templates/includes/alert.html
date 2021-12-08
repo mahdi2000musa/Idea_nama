@@ -1,0 +1,15 @@
+{% if messages %}
+
+    
+    {% for message in messages  %}
+        <div id="message" class="container"> 
+            <div {% if message.tags %} class="alert {{ message.tags }}" {% endif %} role="alert">
+                <a  href="#" style="color:white; font-size: 20px;" data-dismiss='alert'> <span aria-hidden="true">&times;</span></a>
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}{% endif %}
+                {{ message }}
+            </div>  
+        </div> 
+    {% endfor %}
+        
+{% endif %}
+

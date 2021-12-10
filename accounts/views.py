@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.core.files.base import ContentFile
+from django.shortcuts import get_object_or_404, render, redirect
 
 from accounts.forms import RegistrationForm
 from django.contrib.auth.forms import AuthenticationForm
@@ -7,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 
 from accounts.models import Account
 from django.contrib import messages
+from idea.models import Idea_Bank
+from idea.forms import IdeaForm
 
 def register(request ): 
 
@@ -26,7 +29,7 @@ def register(request ):
             return redirect('login')
 
         else: 
-            messages.error(request, 'کاربر گرامی ثبت نام شما انجام مشد مجدادا تلاش بفرمایید')
+            messages.error(request, 'کاربر گرامی ثبت نام شما انجام نشد مجدادا تلاش بفرمایید')
         
     else: 
 
@@ -45,8 +48,6 @@ def login(request):
         phone_number = request.POST.get('username')
         password = request.POST.get('password')
 
-        print(phone_number)
-        print(password)
         user = auth.authenticate(phone_number = phone_number, password = password)
 
         if user is not None: 
@@ -72,3 +73,55 @@ def logout(request ):
     return redirect('login')
     
 
+@login_required(login_url='login')
+def dashboard(request) :
+    user = request.user
+    user_idea = Idea_Bank.objects.filter(user__exact = user)
+
+    context = {
+
+        'user_idea' : user_idea
+    }
+
+    return render(request, 'dashboard.html', context)
+
+
+@login_required(login_url='login') 
+def delete_idea(request, pk) : 
+    user = request.user
+    idea = get_object_or_404(Idea_Bank, pk=pk)
+
+    if idea.user == user : 
+        idea.delete()
+        return redirect('dashboard')
+    else: 
+        messages.error(request, "شما دسترسی برای حذف ایده را ندارید.")
+        return redirect('logout')
+
+@login_required(login_url='login')
+def edit_idea(request, pk) :
+    user = request.user
+    idea = get_object_or_404(Idea_Bank, pk=pk)
+
+    if idea.user == user : 
+        if request.method == "POST": 
+            form = IdeaForm(request.POST,request.FILES, instance = idea)
+            if form.is_valid() :
+                form.save()
+                return redirect('dashboard')
+            else :
+                messages.error(request, "فرم را به درستی تکمبل نکردید !")
+            
+
+        else:
+            form = IdeaForm(instance = idea)
+    
+    else :
+        messages.error(request, "شما دسترسی برای حذف ایده را ندارید.")
+        return redirect('logout')
+
+    context = {
+        'form' : form
+    }  
+
+    return render(request, 'edit_idea.html', context)

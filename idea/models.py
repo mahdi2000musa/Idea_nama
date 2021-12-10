@@ -27,6 +27,7 @@ class Idea_Bank(models.Model):
     is_accepted = models.BooleanField(default=False)
     category = models.ForeignKey(Category, verbose_name="دسته بندی", on_delete=models.CASCADE)
     participant_place = models.CharField(max_length=191, blank= False, default = "")
+    can_edit = models.BooleanField(default=False)
 
    
     

@@ -43,7 +43,7 @@ a {
 
 a:hover {
   color: #5641df;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 
@@ -998,6 +998,7 @@ a.text-dark:hover, a.text-dark:focus {
   color: #8e8aad;
   padding-right: 0rem;
   padding-left: 0.5rem ;
+  float: right;
 }
 
 .breadcrumb-dark .breadcrumb-item a {
@@ -2072,3 +2073,8 @@ a.text-dark:hover, a.text-dark:focus {
   border-radius: 40px 0 0 40px;
 }
 
+
+.list-group-item.active{
+  background-color: #ffc107;
+  border: 1px solid rgba(0,0,0,.125);
+}

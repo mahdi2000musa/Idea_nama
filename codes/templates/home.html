@@ -3,34 +3,45 @@
 {% load static %}
 
 {% block content %}
+{% load jformat %}
 
 {% include 'includes/alert.html' %}
     <div class="container">
-        <div class="page-banner home-banner">
-        <div class="row align-items-center flex-wrap-reverse h-100">
-          
-          {% comment %} class="text-lg text-grey mb-5" {% endcomment %}
-            <div class="col-md-6 py-5 wow fadeInLeft">
-            <h1 class="mb-4">شتاب دهنده فرهنگی اجتماعی</h1>
-            <h1 class="mb-4">طلوع</h1>
-            <h4 class="mb-4">تلالو فکر و اندیشه</h4>
-            <!-- ویدیوی معرفی ایده نما -->
-            <a href="#" class="btn btn-primary btn-split">فردایی روشن <div class="fab"><span class="mai-play"></span></div></a>
-            </div>
-            <div class="col-md-6 py-5 wow zoomIn">
-            <div class="img-fluid text-center">
-                <!-- عکس بنر -->
-                <img src="{{banner.main_banner.url}}" alt="بنر">
-                </div>
-        </div>
-    </div>
-</div>
-</div>
+
+      <div style="margin-bottom=10px; border-radius = 2px;"> 
+        <img src="{% static 'img/blog/tolou2.jpg' %}">
+      </div> 
+      
+        
     
+<div class="container">
+  <div class="text-center wow fadeInUp">
+    <div class="subhead"> رویداد های جاری </div>
+    <div class="divider mx-auto"></div>
+  </div>
+  <div class="row mt-5" style="text-align: right;">
+  {% for event in events %}
+  <div class="col-lg-4 py-3 wow fadeInUp">
+    <div class="card-blog">
+      <div class="header">
+        <div class="post-thumb">
+          <img src="{{event.image.url}}" alt="">
+        </div>
+      </div>
+      <div class="body">
+        <h5 class="post-title"><a href="{% url 'send_idea' %}">{{event.title}}</a></h5>
+        <div class="post-date">منتشر شده در: <a href="#">{{event.created_at|jformat:"(%d %Y %B)  %H:%M "}}</a></div>
+      </div>
+    </div>
+  </div>
+      {% endfor %}
+</div>
+</div>
+
 <div class="page-section">
         <div class="container">
           <div class="text-center wow fadeInUp">
-            <div class="subhead">ایده های برتر ماه</div>
+            <div class="subhead">ایده های برگزیده</div>
             <h2 class="title-section"> ببنید و لذت ببرید</h2>
             <div class="divider mx-auto"></div>
           </div>
@@ -48,7 +59,7 @@
                 </div>
                 <div class="body">
                   <h5 class="post-title"><a href="{% url 'detail_view' item.category.id item.id %}">{{item.title}}</a></h5>
-                  <div class="post-date">منتشر شده در: <a href="#">{{item.created_at}}</a></div>
+                  <div class="post-date">منتشر شده در: <a href="#">{{item.created_at|jformat:"(%d %Y %B)  %H:%M "}}</a></div>
                 </div>
               </div>
             </div>
@@ -147,48 +158,7 @@
       </div> <!-- .page-section -->
       
 
-          <div class="page-section">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="card-service wow fadeInUp">
-                    <div class="header">
-                      <img src="{% static 'img/services/service-1.svg' %}" alt=""> 
-                    </div>
-                    <div class="body">
-                      <h5 class="text-secondary">مهدی موسی سمنانی</h5>
-                      <p>بک کار عزیز</p>
-                      <a href="about.html" class="btn btn-primary">بیشتر بخوانید</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="card-service wow fadeInUp">
-                    <div class="header">
-                      <img src="{% static 'img/services/service-2.svg' %}" alt="">
-                    </div>
-                    <div class="body">
-                      <h5 class="text-secondary">ارشیا رسولی</h5>
-                      <p>فرانت کار عزیز</p>
-                      <a href="about.html" class="btn btn-primary">بیشتر بخوانید</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="card-service wow fadeInUp">
-                    <div class="header">
-                      <img src="{% static 'img/services/service-3.svg' %}" alt="">
-                    </div>
-                    <div class="body">
-                      <h5 class="text-secondary">علیرضا ملکی</h5>
-                      <p>بک کار عزیز</p>
-                      <a href="about.html" class="btn btn-primary">بیشتر بخوانید</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> <!-- .container -->
-          </div> <!-- .page-section -->
+         
         </div>
       </div>
     

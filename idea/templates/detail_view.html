@@ -12,8 +12,9 @@
             <div class="header">
               <div class="post-thumb">
                 <img src="{{ single_idea.category.category_img.url }}" alt="">
+              
               </div>
-            </div>
+            
               <div class="meta-header">
                 <div class="post-author">
                   <div class="avatar">
@@ -78,8 +79,10 @@
             </div>
 
             <div> 
+              {% load static %}
               {% if single_idea.comp_file %}
-              <a href="{{ single_idea.comp_file.url }}" download> file</a> </div>
+              <small>دانلود فایل پیوست ایده </small>
+              <a href="{{ single_idea.comp_file.url }}" download> <img src="{% static 'img/Double-J-Design-Origami-Colored-Pencil-Yellow-document-download.ico' %}" alt="file" width=5%%> </a> </div>
               {% else %}
                 <p> فایل اضافی موجود نیست </p> 
               {% endif %}

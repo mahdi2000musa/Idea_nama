@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load jformat %}
+{% block content %}
+
+    <div dir="rtl" class="container">
+        <div class="page-banner">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-md-6">
+            <h1 class="text-center">رویدادها</h1>
+            </div>
+        </div>
+        </div>
+    </div> 
+    <div dir="rtl" style="text-align:right;" class="page-section">
+        <div class="container">
+            {% for event in events %}
+            <article class="card">
+                <div class="table-responsive">
+                <table class="table table-hover">
+
+                
+                        <tr>
+                            <td width="65">
+                                <img src="{{event.image.url}}" class="img-xs border" width="120" >
+                            </td>
+                            <td> 
+                                <a href="{% url 'send_idea' %}" class="title mb-0">{{event.title}}</a>
+                                
+                            </td>
+                            <td>   
+                                <p class="title mb-0">{{event.created_at|jformat:"(%d %Y %B)  %H:%M "}}</p>
+                            </td>
+                            <td width="250"> 
+                                {% if event.file %}
+                                  <a href="{{event.file.url}}" class="btn btn-outline-primary" download>دانلود فایل </a>
+                                {% else %}
+                                    <p href="#" class="btn btn-outline-primary">فایلی موجود نیست</>
+                                {% endif %}
+                            </td>        
+                        </tr>
+                
+                
+                </table>
+                </div> <!-- table-responsive .end// -->
+                </article> 
+                {% endfor %}
+        </div>
+    </div>
+    
+
+{% endblock %}

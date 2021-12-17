@@ -21,9 +21,12 @@ from . import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('etehadie/secure-admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('verification/', views.verification, name= 'verification'),
+    path('reset_verification/', views.reset_verification, name= 'reset_verification'),
     path('', views.home, name='home'),
     path('idea/', include('idea.urls')),
+    path('about/',include('about.urls') )
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

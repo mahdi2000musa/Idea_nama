@@ -125,3 +125,57 @@ def edit_idea(request, pk) :
     }  
 
     return render(request, 'edit_idea.html', context)
+
+
+def forgot_password(request) :
+
+    if request.method == "POST" : 
+        phone_number = request.POST["phone_number"]
+
+        user = Account.objects.get(phone_number__exact = phone_number)
+        print(user.pk)
+        if user is not None:
+           
+            request.session['pk'] = user.id
+            return redirect('reset_verification')
+
+    return render(request, 'forgotpassword.html')
+
+
+def changepassword(request) :
+    pk = request.session['pk']
+    user = Account.objects.get(pk = pk)
+
+    if request.method == "POST" : 
+        new_pass = request.POST["newpass"]
+
+        user.set_password(new_pass)
+        user.save()
+        return redirect('login')
+    
+    return render(request, 'change_password.html')
+
+
+# @login_required(login_url='login')
+# def account_info(request) :
+
+#     user = request.user
+#     if request.method == "POST" : 
+    
+#         form = RegistrationForm(request.POST, instance = user)
+
+#         if form.is_valid() :
+#             form.save()
+#             return redirect('dashboard')
+#         else :
+#             messages.error(request, "فرم را به درستی تکمبل نکردید !")
+
+
+#     else:
+#         form = RegistrationForm(instance = user)
+        
+
+#     context = {
+#         'form' : form
+#     }
+#     return render(request, 'account_info.html', context)

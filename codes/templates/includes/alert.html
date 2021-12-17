@@ -2,9 +2,9 @@
 
     
     {% for message in messages  %}
-        <div id="message" class="container"> 
+        <div id="message" class="alert alert-dismissable fade show" role="alert" > 
             <div {% if message.tags %} class="alert {{ message.tags }}" {% endif %} role="alert">
-                <button type="button" class="closr" href="#" style="color:white; font-size: 20px;" data-dismiss='alert'> <p aria-hidden="true">&times;</p></button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" style="color:white; font-size: 20px;"  aria-label="close"> </button>
                 {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}{% endif %}
                 {{ message }}
             </div>  

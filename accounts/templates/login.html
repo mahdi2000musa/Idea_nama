@@ -13,7 +13,7 @@
         <div class="col-sm-8 col-md-6 col-lg-4 col-xl-3">
 <div class="content">
     <div class="text text-center">
-        طلوع
+      <img src="{% static 'img/blog/tolou.png' %}" width="100px">
     </div>
     <form action="{% url 'login' %}" method="POST">
     {% include 'includes/alert.html' %}
@@ -29,7 +29,7 @@
             <label>رمز عبور</label>
         </div>
         <div class="forget-pass text-center">
-           <a href="#">رمز عبور خود را فراموش کردید؟</a>
+           <a href="{% url 'forgotpassword' %}">رمز عبور خود را فراموش کردید؟</a>
            </div>
 
            {{form.errors}}

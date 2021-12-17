@@ -2,6 +2,8 @@
 
 
 {% block content %}
+{% load jformat %}
+
 
 <div dir="rtl" class="container">
     <div class="page-banner">
@@ -15,12 +17,33 @@
   </div>
 
 
+   
+           
+
   <div dir="rtl" class="page-section" style="text-align: right; justify-content: center;">
+    
     
     <div class="container py-3 wow fadeInUp">
       <div class="row">
         
+        <div class="widget-box">
+          <form action="{% url 'search' %}" class="search-widget" method="GET">
+            <input type="text" class="form-control" placeholder="دنبال چه هستید ؟ " name="keyword">
+            <button type="submit" class="btn btn-primary btn-block">جستجو</button>
+          </form>
+        </div> 
 
+       
+        <div class="widget-box">
+          <h4 class="widget-title">رویدادها</h4>
+          <div class="divider"></div>
+          <ul class="categories">
+            {% for category in categories %}
+             <li><a href="{% url 'idea_view' category.id %}">{{category.category_name}}</a></li>
+            {% endfor %}
+          </ul>
+        </div> 
+        
         {% for idea in ideas %}
 
             <div class="col-lg-4 py-3">
@@ -32,7 +55,7 @@
                 </div>
                 <div class="body">
                 <h5 class="post-title"><a href="{% url 'detail_view' idea.category.pk idea.pk %}"> {{idea.title}} </a></h5>
-                <div class="post-date">منتشرشده در :  <a href="#"> {{idea.created_at}} </a></div>
+                <div class="post-date">منتشرشده در :  <a href="#"> {{idea.created_at|jformat:"(%d %Y %B)  %H:%M "}} </a></div>
                 </div>
             </div>
             </div>

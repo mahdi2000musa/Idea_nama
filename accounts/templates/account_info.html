@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- ============================ COMPONENT REGISTER   ================================= -->
+<div dir="rtl" class="card mx-auto" style="max-width:520px; margin-top:40px;">
+	<article class="card-body">
+	  <header class="mb-4"><h4 class="card-title">اطلاعات کاربری</h4></header>
+	  <form action="{% url 'account_info' %}" method="POST">
+         
+			  {{form.as_p}}
+			
+				  
+			  <br><br><br>
+			  <div class="form-group" style="text-align: center;">
+				  {% comment %} <button type="submit" class="btn btn-primary btn-block" > ثبت تغییرات  </button> {% endcomment %}
+			  </div> <!-- form-group// -->      
+				  
+		  </form>
+	  </article><!-- card-body.// -->
+  </div> <!-- card .// -->
+  <br><br>
+<!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+
+{% endblock %}

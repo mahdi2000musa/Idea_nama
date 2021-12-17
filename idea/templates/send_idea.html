@@ -20,7 +20,7 @@
             <div class=" col-lg-8 mb-5 mb-lg-0"  >
 
                 <h2  class="mb-4 font-weight-medium text-secondary" style="text-align: center ;" >جزییات ایده ی خود را در زیر وارد کنید</h2>
-          
+                    {% include 'includes/alert.html' %}
                     <form action="{% url 'send_idea' %}"  method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.as_p }}
